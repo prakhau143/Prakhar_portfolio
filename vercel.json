@@ -5,11 +5,5 @@
   "trailingSlash": false,
   "builds": [
     { "src": "public_html/**/*", "use": "@vercel/static" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/public_html/$1" },
-    { "handle": "filesystem" },
-    { "src": "/", "dest": "/public_html/index.html" },
-    { "src": "/(.+)", "dest": "/public_html/$1" }
   ]
 }
