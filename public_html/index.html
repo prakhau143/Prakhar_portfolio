@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="Start your development with JohnDoe landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Prakhar Mittal | UI/UX Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/imgs/p.png">
+    <!-- font icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + JohnDoe main styles -->
+	<link rel="stylesheet" href="assets/css/johndoe.css">
+    <!-- Custom Animations CSS -->
+    <link rel="stylesheet" href="assets/css/custom-animations.css">
+    <!-- Fix for horizontal scrolling and project card styling -->
+    <style>
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+            touch-action: manipulation;
+            -webkit-overflow-scrolling: touch;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card {
+            height: 100%;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+        }
+        .card-text {
+            flex-grow: 1;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .col-md-3 {
+                margin-bottom: 20px;
+            }
+            .section {
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .col-md-3 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+            .card-img-top {
+                height: 160px;
+            }
+            .map-background iframe {
+                height: 100%;
+            }
+            .contact-form-card, .contact-info-card {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            .navbar .nav-link {
+                padding: 10px 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .col-md-3 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .card-img-top {
+                height: 200px;
+            }
+            .header-title {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .navbar-brand img {
+                max-height: 40px;
+            }
+            .contact-form-card, .contact-info-card {
+                padding: 10px;
+            }
+            .map-background {
+                opacity: 0.3;
+            }
+        }
+        .map-container {
+            width: 100%;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .map-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+        .section.contact {
+            position: relative;
+            padding-top: 80px;
+            padding-bottom: 80px;
+            overflow: hidden;
+        }
+        .contact-form-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .contact-info-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            padding-top: 60px;
+            padding-bottom: 60px;
+            background: 
+                linear-gradient(135deg, rgba(40,44,52,0.7) 0%, rgba(52,58,64,0.7) 100%),
+                url('assets/imgs/header.jpg') center center/cover no-repeat;
+            color: #fff;
+            position: relative;
+        }
+        .header-content {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .navbar.sticky-top {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body  id="home">
+    <div id="dark-overlay"></div>
+    <a href="components.html" class="btn btn-primary btn-component"><i class="ti-shift-left-alt"></i> Components</a>
+    <header class="header" style="
+    padding-top: 60px; 
+    padding-bottom: 60px; 
+    background: linear-gradient(135deg, rgba(220,53,69,0.7) 0%, rgba(52,58,64,0.7) 100%), url('assets/imgs/header.jpg') center center/cover no-repeat; 
+    color: #fff; 
+    position: relative;">
+        <div class="container">
+            <ul class="social-icons pt-3">
+                <li class="social-item"><a class="social-link text-light" href="https://www.linkedin.com/in/its-prakhar-mittal"><i class="ti-linkedin" aria-hidden="true"></i></a></li>
+                <li class="social-item"><a class="social-link text-light" href="https://github.com/prakhau143"><i class="ti-github" aria-hidden="true"></i></a></li>
+            </ul>  
+            <div class="header-content text-center">
+                <h4 class="header-subtitle">Hello, I am</h4>
+                <h1 class="header-title">Prakhar Mittal</h1>
+                <h6 class="header-mono">Software & Full-stack | Developer</h6>
+                <a href="https://drive.google.com/file/d/1VXq5wq3TN7iLAVMZsrHA-D87VtB6RXAF/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-rounded resume-btn mt-3">
+                    <i class="ti-download pr-2"></i>Download Resume
+                </a>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse mt-sm-20 navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#resume" class="nav-link">Resume</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav brand">
+                    <img src="assets/imgs/avatar.jpeg" alt="" class="brand-img">
+                    <li class="brand-txt">
+                        <h5 class="brand-title">Prakhar Mittal</h5>
+                        <div class="brand-subtitle">Software & Full-stack | Developer</div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="#portfolio" class="nav-link">Portfolio</a>
+                    </li>
+                    <li class="nav-item last-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div id="about" class="row about-section">
+            <div class="about-flex-container">
+                <div class="about-card">
+                <h3 class="font-weight-light">Who am I ?</h3>
+                <span class="line mb-5"></span>
+                <h5 class="mb-3">A Software & Full-stack / Developer Located In Our Lovely Earth</h5>
+                    <p class="mt-20">Hello, I'm Prakhar Mittal, currently pursuing a Bachelor of Engineering in Computer Science at VIT Bhopal University. I'm from Dholpur and currently in Bhopal. I have expertise with cloud computing, the MERN stack, and my area of expertise is Software development. I love building efficient, user-centric applications and continuously improving my skills in data structures, algorithms, and system design. Speaking Hindi and English well, I'm passionate about transforming concepts into workable solutions. I've led projects like a machine learning-based "Stock-Prediction-System" tool. Currently, I'm preparing for a Software & Full-stack Developer role and am ready for urgent joining and onsite interviews.</p>
+            </div>
+                <div class="about-card">
+                <h3 class="font-weight-light">Personal Info</h3>
+                <span class="line mb-5"></span>
+                <ul class="mt40 info list-unstyled">
+                    <li><span>Birthdate</span> : 01/01/2003</li>
+                    <li><span>Email</span> : mittalprakhar504@gmail.com</li>
+                    <li><span>Phone</span> : +916377398830</li>
+                    <li><span>Address</span> :  Bhopal , India.</li>
+                </ul>
+                <ul class="social-icons pt-3">
+                    <li class="social-item"><a class="social-link" href="https://www.facebook.com/profile.php?id=100079016100026"><i class="ti-facebook" aria-hidden="true"></i></a></li>
+                    <li class="social-item"><a class="social-link" href="https://www.linkedin.com/in/its-prakhar-mittal"><i class="ti-linkedin" aria-hidden="true"></i></a></li>
+                    <li class="social-item"><a class="social-link" href="https://github.com/prakhau143"><i class="ti-github" aria-hidden="true"></i></a></li>
+                </ul>  
+            </div>
+                <div class="about-card">
+                <h3 class="font-weight-light">My Expertise</h3>
+                <span class="line mb-5"></span>
+                <div class="row">
+                    <div class="col-1 text-danger pt-1"><i class="ti-widget icon-lg"></i></div>
+                    <div class="col-10 ml-auto mr-3">
+                        <h6>Software Development</h6>
+                            <p class="subtitle">As a passionate and results-driven Java Software Developer, I specialize in building robust, scalable, and high-performance applications. My objective is to drive impactful software solutions by contributing technical expertise and a growth mindset.</p>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1 text-danger pt-1"><i class="ti-paint-bucket icon-lg"></i></div>
+                    <div class="col-10 ml-auto mr-3">
+                        <h6>Web Development</h6>
+                            <p class="subtitle">Building responsive and high-performance websites that are optimized for both user experience and technical efficiency. Bringing design concepts to life with clean, scalable code, ensuring cross-platform compatibility and seamless functionality.</p>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1 text-danger pt-1"><i class="ti-stats-up icon-lg"></i></div>
+                    <div class="col-10 ml-auto mr-3">
+                        <h6>Skills</h6>
+                            <p class="subtitle">I have strong technical skills centered around full-stack web development and computer science fundamentals. I am proficient in key programming languages like HTML/CSS, Java, MySQL, and JavaScript, and actively use popular frameworks like Express.js, React.js, and Node.js to build full-stack applications.</p>
+                        <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section bg-dark text-center d-flex align-items-center justify-content-center" style="min-height: 100 px;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 style="color: white;">
+                Make it work, make it right, make it fast.
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!--Resume Section-->
+    <section class="section" id="resume">
+        <div class="container">
+            <h2 class="mb-5"><span class="text-danger">My</span> Resume</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                       <div class="card-header">
+                            <div class="mt-2">
+                                <h4>Expertise</h4>
+                                <span class="line"></span>  
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="title text-danger">2023 - 2024</h6>
+<p>Web Developer Intern, Ethanus Pvt. ltd.</p>
+<p class="subtitle">As a Web Developer intern, I contributed to designing and developing responsive websites using modern web technologies. I collaborated with teams to implement user-friendly features and optimized website performance, ensuring seamless user experiences. My role involved working with HTML, CSS, JavaScript, and frameworks to deliver impactful web solutions.</p>
+                            <hr>
+                            <h6 class="title text-danger">Mar 2025 - MAY 2025</h6>
+<p>As a frontend developer at Devfrend</p>
+<p class="subtitle">As a Frontend Developer at DevFrend Websolutions, I design and develop responsive, user-friendly web interfaces using HTML, CSS, JavaScript, and modern frameworks. I collaborate with UI/UX designers and backend teams to deliver seamless user experiences, optimize performance, and ensure cross-browser compatibility across platforms.</p>
+                            <hr>
+                            <h6 class="title text-danger">MAY 2025 - Present</h6>
+                            <p>As a Python developer at KreativeTimeBox</p>
+                            <p>As a Python Developer, I developed backend APIs and automation scripts using Python and Flask to streamline workflows and improve
+                                system efficiency.I also worked on data processing, integrating third-party APIs, and building scalable solutions for real-time application needs.</p>
+                        </div>
+                            <p class="subtitle">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                       <div class="card-header">
+                            <div class="mt-2">
+                                <h4>Education</h4>
+                                <span class="line"></span>  
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="title text-danger">2021-2025 - Present</h6>
+                            <h4>Vellore Insititute Of Technology - Bhopal</h4>
+                            <P class="subtitle">I am pursuing a B.Tech in Computer Science and Engineering at VIT Bhopal.</P>
+                            <hr>
+                            <h4 class="title text-danger">Higher Secondary Education</h4>
+                            <h6>Rajsthan Board of Secondary Education</h6>
+                            <p class="subtitle">Laxmi Shiksha Niketan bari, Dholpur, Rajasthan</p>
+                            <hr>
+                            <h4 class="title text-danger">Secondary Education</h4>
+                            <h6> Rajsthan Board of Secondary Education</h6>
+                            <P class="subtitle">Adarsh Vidya Mandir bari , Dholpur, Rajasthan</P>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                       <div class="card-header">
+                            <div class="pull-left">
+                                <h4 class="mt-2">Skills</h4>
+                                <span class="line"></span>  
+                            </div>
+                        </div>
+                        <div class="card-body pb-2">
+                           <h4 class="mt-2">Technical Skills</h4>
+                           <span class="line mb-3"></span>
+                           <h6>HTML5 &amp; CSS3</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 97%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h6>JavaScript</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h6>Java</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h6>SQL</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h6>Python</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h6>UI/UX</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h6>Reactjs</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            
+                            <h4 class="mt-4">Languages</h4>
+                            <span class="line mb-3"></span>
+                            <h6>English</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h6>Hindi</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h6>Sanskrit</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 57%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-dark text-center d-flex align-items-center justify-content-center" style="min-height: 100px;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 style="color: white;">
+                Better design, better experiences. As a designer and developer, I understand the perfect user interface should look good and work even better.
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    <section class="section" id="service">
+        <div class="container">
+            <h2 class="mb-5 pb-4"><span class="text-danger">My</span> Certificates</h2>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="card mb-5">
+                       <div class="card-header has-icon">
+                            <i class="ti-vector text-danger" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body px-4 py-3">
+                            <h5 class="mb-3 card-title text-dark">NPTEL Cloud Computing </h5>
+                            <p class="subtitle">
+                                I successfully completed the Cloud Computing course offered by the Indian Institute of Technology (IIT) Kharagpur through the NPTEL Swayam platform in April 2024, achieving an Elite certification with a consolidated score of 69%. This intensive 12-week program provided me with in-depth knowledge of cloud service models (IaaS, PaaS, SaaS), cloud architecture, virtualization techniques, and resource management. I also gained hands-on experience in understanding cloud deployment models (public, private, hybrid) and key concepts like scalability, cloud security, and cost optimization.
+                                <br><br>
+                                <a href="https://drive.google.com/file/d/13Krgcxh6amf09RGio-ndIu0evz3_lzHd/view?usp=sharing" target="_blank" style="color: blue; text-decoration: underline;">View Certification</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card mb-5">
+                       <div class="card-header has-icon">
+                            <i class="ti-write text-danger" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body px-4 py-3">
+                            <h5 class="mb-3 card-title text-dark">AWS Certified Cloud Practitioner</h5>
+                            <p class="subtitle">
+                                I am certified in the <strong>AWS Cloud Computing Which is held by AWS. </strong>My understanding of the foundational concepts involving cloud technology with Amazon Web Services (AWS) was validated through the AWS Certified Cloud Practitioner certification, which I earned on March 10, 2024. The certification itself illustrates my knowledge of the main fundamental services encompassed in AWS, cloud concepts, architectural principles along with security and compliance, billing as well as pricing models, and support structure.
+                                <br><br>
+                                <a href="https://drive.google.com/file/d/1VabzlHpogAJ9_PF8g5Sfr3trikE7ufBO/view?usp=sharing" target="_blank" style="color: blue; text-decoration: underline;">View Certification</a>
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card mb-5">
+                       <div class="card-header has-icon">
+                            <i class="ti-package text-danger" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body px-4 py-3">
+                            <h5 class="mb-3 card-title text-dark">the Robothon Workshop and Competition</h5>
+                            <p class="subtitle">
+                                I received a Certificate of Excellence for my involvement in the Robothon Workshop and Competition from July 21 to September 3, 2022, organized by the Robotics Club of VIT Bhopal University. I received 2nd prize in the competition owing to my versatility in problem-solving robotic systems with reasoned and innovative approaches. My rank allowed me to build on skills obtained during the workshop, which included designing and simulating robotic race tracks as well as functioning within a team for automation projects on embedded systems..
+                                <br><br>
+                                <a href="https://drive.google.com/file/d/1-99_hzKRaNISBJUcbLuFSGtSWEG8Kzln/view?usp=sharing" target="_blank" style="color: blue; text-decoration: underline;">View Certificate</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card mb-5">
+                       <div class="card-header has-icon">
+                            <i class="ti-map-alt text-danger" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body px-4 py-3">
+                            <h5 class="mb-3 card-title text-dark">Applied Machine Learning in Python</h5>
+                            <p class="subtitle">
+                                I finished the Applied Machine Learning in Python course from the University of Michigan through Coursera. This course gave me a solid grounding in practical machine learning implemented with Python. I learned about supervised and unsupervised learning, feature extraction, model assessment, and how to work with important libraries like scikit-learn and pandas.
+                            </p>
+                            <a href="https://drive.google.com/file/d/1YECBws1NRuRKC-PEUBVI4GSZJCh7N0YP/view?usp=sharing" target="_blank">View Certificate</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card mb-5">
+                       <div class="card-header has-icon">
+                            <i class="ti-bar-chart text-danger" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body px-4 py-3">
+                            <h5 class="mb-3 card-title text-dark">MERN Full Stack</h5>
+                            <p class="subtitle">
+                                I recently wrapped up a MERN Full Stack Internship Program with Ethnus, which ran from August to November 2023. I dedicated over 100 hours to hands-on learning and development during this time. This internship really helped me dive into building dynamic web applications using the MERN stack—MongoDB, Express.js, React.js, and Node.js. I picked up valuable skills in full-stack application architecture, creating RESTful APIs, frontend development, and managing databases.
+                            </p>
+                            <a href="https://drive.google.com/file/d/1BhOS4X1JKX1rwJAdB6f3h0pecUVNK6n9/view?usp=sharing" target="_blank">View Certificate</a>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="card mb-5">
+                   <div class="card-header has-icon">
+                        <i class="ti-bar-chart text-danger" aria-hidden="true"></i>
+                    </div>
+                    <div class="card-body px-4 py-3">
+                        <h5 class="mb-3 card-title text-dark">Junior Frontend Developer</h5>
+                        <p class="subtitle">
+                            From May 15, 2025 to June 15, 2025, I had the opportunity to work as a Frontend Developer Intern at Devfrend Web Solutions. During this one-month internship, I actively contributed to the development team by building and refining user interfaces for client-facing web applications.
+Throughout the internship, I demonstrated my skills in HTML, CSS, JavaScript, and React.js, focusing on creating responsive, dynamic, and visually appealing web components. I collaborated with designers and backend developers to ensure seamless integration and functionality.
+I was appreciated by the team, including the CEO and Founder, Amar Gupta, for my problem-solving ability, teamwork, and dedication. This experience helped me strengthen my technical foundation and gain valuable insight into real-world project execution and agile workflows.
+                        </p>
+                        <a href="https://drive.google.com/file/d/10RcQF-I2HFv9Y3_GcoT7YsOi_T-INUZh/view?usp=sharing" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section bg-dark py-5" style="min-height: 100 px;">
+        <div class="container text-center">
+            <h2 class="text-light mb-5 font-weight-normal">I Am Currently Seeking Opportunities</h2>
+            <a href="https://www.linkedin.com/in/its-prakhar-mittal" target="_blank">
+                <button class="btn bg-primary w-lg">Connect with Me</button>
+            </a>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="mb-5"><span class="text-danger">My</span> Projects</h2>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/web-1.jpeg" class="card-img-top" alt="Food-YUm-YUm">
+                        <div class="card-body">
+                            <h5 class="card-title">Food-YUm-YUm</h5>
+                            <p class="card-text">A food delivery platform developed to streamline restaurant operations and enhance customer experience.</p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/food-yum-yum" target="_blank" class="btn btn-danger btn-sm">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/web-2.png" class="card-img-top" alt="On-doc">
+                        <div class="card-body">
+                            <h5 class="card-title">On-doc</h5>
+                            <p class="card-text">A modern healthcare appointment system with React.JS, ShadCn, and Tailwind CSS.</p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/on-doc" target="_blank" class="btn btn-danger btn-sm">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/web-3.png" class="card-img-top" alt="Ecommerce Website">
+                        <div class="card-body">
+                            <h5 class="card-title">Ecommerce Website</h5>
+                            <p class="card-text">Full-featured e-commerce platform with product catalog, cart functionality and secure checkout.</p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/Ecommerce-website-main" target="_blank" class="btn btn-danger btn-sm">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/web-4.png" class="card-img-top" alt="Corvo Coffee Shop">
+                        <div class="card-body">
+                            <h5 class="card-title">Corvo Coffee Shop</h5>
+                            <p class="card-text">Responsive coffee shop website built with HTML, CSS & JavaScript featuring smooth animations.</p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/coffee-website-main" target="_blank" class="btn btn-danger btn-sm">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Project 1 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/web-5.png" class="card-img-top" alt="Project 5">
+                        <div class="card-body">
+                            <h5 class="card-title">Spotify Podcast</h5>
+                            <p class="card-text">Podcast Home: Personalized recommendations, trending, and "Podcast of the Day"
+                                Podcast Discovery: Browse by category, instant play, smart search
+                                Podcast Player: Clean UI, episode list, show notes, subscribe/like/share
+                                Listening Progress: Continue listening, new episode notifications</p>
+                            <div class="mt-3">
+                                <a href="https://prakhau143.github.io/Spotify_podcast/" class="btn btn-danger btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Project 2 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/web-6.png" class="card-img-top" alt="Project 6">
+                        <div class="card-body">
+                            <h5 class="card-title">Website Analyzer</h5>
+                            <p class="card-text">
+                                A Website Analyzer is an online tool designed to evaluate the performance, structure, SEO, and usability of a website. It scans a given URL and provides detailed insights into how well the website is optimized for users, search engines, and technical health.</p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/web-analyzer/tree/master/opinion_mining_app" class="btn btn-danger btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Project 3 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/web-7.png" class="card-img-top" alt="Project 7">
+                        <div class="card-body">
+                            <h5 class="card-title">Indore games website</h5>
+                            <p class="card-text">A modern, responsive website for PEds Play, an indoor playground and games center located in Savannah, GA. This project showcases a collection of indoor games with interactive features and a vibrant sports-themed design.</p>
+                            <div class="mt-3">
+                                <a href="https://indoor-games.vercel.app" class="btn btn-danger btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Project 4 -->
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/web-8.png" class="card-img-top" alt="Project 8">
+                        <div class="card-body">
+                            <h5 class="card-title">Yoga & Meditation website</h5>
+                            <p class="card-text">This application is dedicated to fostering physical and mental well-being. It offers an array of resources, from comprehensive guides on diverse yoga and meditation practices to schedules for classes and workshops, all conducted by professionals in the field</p>
+                            <div class="mt-3">
+                                <a href="https://yoga-project-mu.vercel.app" class="btn btn-danger btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section contact" id="contact">
+        <div class="map-background">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d448193.9510192051!2d76.76357332396312!3d28.644287356088828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b715389640!2sDelhi!5e0!3m2!1sen!2sin!4v1654321234567!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="contact-form-card">
+                        <h4 class="contact-title">Send a message</h4>
+                        <form action="">
+                            <div class="form-group">
+                                <input  class="form-control" type="text" placeholder="Name *" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="email" placeholder="Email *" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Message *" rows="7" required></textarea>
+                            </div>
+                            <div class="form-group ">
+                                <button type="submit" class="form-control btn btn-primary" >Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-info-card">
+                        <h4 class="contact-title">Get in touch</h4>
+                        <div class="row mb-2">
+                            <div class="col-1 pt-1 mr-1">
+                                <i class="ti-mobile icon-md"></i>
+                            </div>
+                            <div class="col-10 ">
+                                <h6 class="d-inline">Phone : <br> <span class="text-muted">+916377398830</span></h6>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-1 pt-1 mr-1">
+                                <i class="ti-map-alt icon-md"></i>
+                            </div>
+                            <div class="col-10">
+                                <h6 class="d-inline">Address :<br> <span class="text-muted">Bhopal , India</span></h6>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-1 pt-1 mr-1">
+                                <i class="ti-envelope icon-md"></i>
+                            </div>
+                            <div class="col-10">
+                                <h6 class="d-inline">Email :<br> <span class="text-muted">mittalprakhar504@gmail.com</span></h6>
+                            </div>
+                        </div>
+                        <ul class="social-icons pt-4">
+                            <li class="social-item"><a class="social-link text-dark" href="https://www.facebook.com/profile.php?id=100079016100026"><i class="ti-facebook" aria-hidden="true"></i></a></li>
+                            <li class="social-item"><a class="social-link text-dark" href="https://www.linkedin.com/in/its-prakhar-mittal"><i class="ti-linkedin" aria-hidden="true"></i></a></li>
+                            <li class="social-item"><a class="social-link text-dark" href="https://github.com/prakhau143"><i class="ti-github" aria-hidden="true"></i></a></li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    
+    <footer class="footer py-3">
+        <div class="container">
+            <p class="small mb-0 text-light">
+                &copy; <script>document.write(new Date().getFullYear())</script> Created With <i class="ti-heart text-danger"></i> By <a  target="_blank"><span class="text-danger" title="Bootstrap 4 Themes and Dashboards">PrakhAr mittal</span></a> 
+            </p>
+        </div>
+    </footer>
+
+	<!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+    <script src="assets/vendors/isotope/isotope.pkgd.js"></script>
+    <!-- Map is embedded as an iframe -->
+    
+    <!-- JohnDoe js -->
+    <script src="assets/js/johndoe.js"></script>
+    <!-- Custom Animations JS -->
+    <script src="assets/js/custom-animations.js"></script>
+    <script>
+        function openResume() {
+            var resumeUrl = 'https://github.com/prakhau143/Resume-/blob/55d4f90aa50eda58ab8d5b6c889918184716ffe7/Prakhar_mittal_s_resume%20(2).pdf';
+            window.open(resumeUrl, '_blank');
+        }
+        
+        // Map is embedded as an iframe
+    </script>
+    <!-- Sparkle Cursor Effect -->
+<style>
+  .sparkle {
+    position: fixed;
+    pointer-events: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px 2px #fff, 0 0 16px 4px #ffd700;
+    opacity: 0.8;
+    z-index: 9999; /* ensures it's above everything */
+    animation: sparkle-fade 0.7s linear forwards;
+  }
+  @keyframes sparkle-fade {
+    to {
+      opacity: 0;
+      transform: scale(1.8) translateY(-10px);
+    }
+  }
+</style>
+<script>
+  document.addEventListener('mousemove', function(e) {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.style.left = (e.clientX - 4) + 'px';
+    sparkle.style.top = (e.clientY - 4) + 'px';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 700);
+  });
+</script>
+</body>
+</html>
