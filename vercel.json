@@ -1,1 +1,10 @@
 
+{
+  "version": 2,
+  "public": true,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "builds": [
+    { "src": "public_html/**/*", "use": "@vercel/static" }
+  ]
+}
