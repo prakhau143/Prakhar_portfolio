@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no">
     <meta name="description" content="Start your development with JohnDoe landing page.">
     <meta name="author" content="Devcrud">
+    <meta name="keywords" content="Prakhar Mittal, Full Stack Developer, MERN Developer, Java Developer, Python Developer, Portfolio, VIT Bhopal">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Prakhar Mittal | Full Stack Developer Portfolio">
+    <meta property="og:description" content="Official portfolio of Prakhar Mittal - Software & Full Stack Developer.">
+    <meta property="og:image" content="assets/imgs/header.jpg">
+    <meta property="og:type" content="website">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Prakhar Mittal",
+      "url": "https://yourdomain.com",
+      "jobTitle": "Full Stack Developer",
+      "sameAs": [
+        "https://www.linkedin.com/in/its-prakhar-mittal",
+        "https://github.com/prakhau143"
+      ]
+    }
+    </script>
     <title>Prakhar Mittal | UI/UX Portfolio</title>
     <link rel="icon" type="image/png" href="assets/imgs/p.png">
     <!-- font icons -->
@@ -16,6 +35,138 @@
     <link rel="stylesheet" href="assets/css/custom-animations.css">
     <!-- Fix for horizontal scrolling and project card styling -->
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .section-bg {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+            padding: 120px 0;
+        }
+
+        /* Resume & Certificates: full visible background, no overlay, no fixed attachment */
+        #resume.section-bg,
+        #service.section-bg {
+            background-attachment: scroll;
+            overflow: visible;
+            background-size: cover;
+            background-position: center;
+        }
+        #resume.section-bg {
+            background-image: url('assets/imgs/back1.png');
+        }
+        #service.section-bg {
+            background-image: url('assets/imgs/back3.png');
+        }
+        #resume.section-bg::before,
+        #service.section-bg::before {
+            display: none;
+        }
+
+        .resume-bg {
+            background-image: url('assets/imgs/back1.png');
+        }
+
+        .projects-bg {
+            background-image: url('assets/imgs/back2.png');
+        }
+
+        .service-bg {
+            background-image: url('assets/imgs/back3.png');
+        }
+
+        .about-bg {
+            background-image: url('assets/imgs/back4.png');
+        }
+
+        .section-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 1;
+        }
+
+        .resume-bg::before,
+        .service-bg::before {
+            background: rgba(40, 0, 0, 0.35);
+        }
+
+        .section-bg canvas.stars {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .section-bg > .container {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Resume & Certificates: content wrapper (no full-width block), grid, solid white cards */
+        .section-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        #resume .section-content,
+        #service .section-content {
+            padding: 0 20px;
+        }
+        .resume-grid,
+        .certificates-grid {
+            display: grid;
+            gap: 114px;
+            margin-top: 2rem;
+        }
+        #resume .resume-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        #service .certificates-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media (max-width: 992px) {
+            #resume .resume-grid {
+                grid-template-columns: 1fr;
+            }
+            #service .certificates-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 576px) {
+            #service .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        #resume .card,
+        #service .card {
+            background: #fff;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        #resume .card:hover,
+        #service .card:hover {
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+        #resume .section-title,
+        #service .section-title {
+            margin-bottom: 0;
+            color: #ff0000;
+        }
+
         html, body {
             overflow-x: hidden;
             max-width: 100%;
@@ -41,6 +192,18 @@
             height: 100%;
             transition: transform 0.3s;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 15px;
+        }
+
+        .contact-form-card,
+        .contact-info-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 15px;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -74,6 +237,18 @@
                 padding-top: 60px;
                 padding-bottom: 60px;
             }
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section.section-bg {
+            padding: 120px 0;
+        }
+
+        .section:not(.bg-dark):not(.section-bg) {
+            background: transparent !important;
         }
         
         @media (max-width: 768px) {
@@ -158,6 +333,9 @@
                 url('assets/imgs/header.jpg') center center/cover no-repeat;
             color: #fff;
             position: relative;
+            transform: none !important;
+            transition: none !important;
+            will-change: auto !important;
         }
         .header-content {
             text-align: center;
@@ -169,6 +347,117 @@
         .navbar.sticky-top {
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
+
+        .about-flex-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .about-card {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .about-wrap {
+            max-width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 70px;
+        }
+
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-card {
+            background: rgb(255, 255, 255);
+            border: 1px solid rgb(255, 255, 255);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+        }
+
+        .about-card h3,
+        .about-card h5 {
+            letter-spacing: -0.02em;
+        }
+
+        .about-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .about-item {
+            display: grid;
+            grid-template-columns: 34px 1fr;
+            gap: 12px;
+            align-items: start;
+        }
+
+        .about-item i {
+            margin-top: 2px;
+        }
+
+        .section.section-bg.about-bg .container {
+            background: transparent !important;
+        }
+
+        .header {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header canvas.stars {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .header .container {
+            position: relative;
+            z-index: 2;
+        }
+        /* ===== FORCE ABOUT CARDS PURE WHITE ===== */
+
+#about .about-card {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Remove any inherited transparency */
+#about .about-card * {
+    opacity: 1 !important;
+}
+
+/* Remove any possible overlay effect */
+#about.section-bg::before {
+    display: none !important;
+}
+
+/* Ensure container is transparent */
+#about .container,
+#about .about-wrap {
+    background: transparent !important;
+}
     </style>
 </head>
 <body  id="home">
@@ -180,6 +469,7 @@
     background: linear-gradient(135deg, rgba(220,53,69,0.7) 0%, rgba(52,58,64,0.7) 100%), url('assets/imgs/header.jpg') center center/cover no-repeat; 
     color: #fff; 
     position: relative;">
+        <canvas class="stars"></canvas>
         <div class="container">
             <ul class="social-icons pt-3">
                 <li class="social-item"><a class="social-link text-light" href="https://www.linkedin.com/in/its-prakhar-mittal"><i class="ti-linkedin" aria-hidden="true"></i></a></li>
@@ -189,7 +479,7 @@
                 <h4 class="header-subtitle">Hello, I am</h4>
                 <h1 class="header-title">Prakhar Mittal</h1>
                 <h6 class="header-mono">Software & Full-stack | Developer</h6>
-                <a href="https://drive.google.com/file/d/1VXq5wq3TN7iLAVMZsrHA-D87VtB6RXAF/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-rounded resume-btn mt-3">
+                <a href="https://drive.google.com/file/d/1tPOkux79gDPGOhhVVQeGY3wZRTFC-iyx/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-rounded resume-btn mt-3">
                     <i class="ti-download pr-2"></i>Download Resume
                 </a>
             </div>
@@ -230,62 +520,70 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
-        <div id="about" class="row about-section">
-            <div class="about-flex-container">
+    <section class="section section-bg about-bg" id="about">
+        <canvas class="stars"></canvas>
+        <div class="about-wrap">
+            <div class="about-grid">
                 <div class="about-card">
-                <h3 class="font-weight-light">Who am I ?</h3>
-                <span class="line mb-5"></span>
-                <h5 class="mb-3">A Software & Full-stack / Developer Located In Our Lovely Earth</h5>
-                    <p class="mt-20">Hello, I'm Prakhar Mittal, currently pursuing a Bachelor of Engineering in Computer Science at VIT Bhopal University. I'm from Dholpur and currently in Bhopal. I have expertise with cloud computing, the MERN stack, and my area of expertise is Software development. I love building efficient, user-centric applications and continuously improving my skills in data structures, algorithms, and system design. Speaking Hindi and English well, I'm passionate about transforming concepts into workable solutions. I've led projects like a machine learning-based "Stock-Prediction-System" tool. Currently, I'm preparing for a Software & Full-stack Developer role and am ready for urgent joining and onsite interviews.</p>
-            </div>
-                <div class="about-card">
-                <h3 class="font-weight-light">Personal Info</h3>
-                <span class="line mb-5"></span>
-                <ul class="mt40 info list-unstyled">
-                    <li><span>Birthdate</span> : 01/01/2003</li>
-                    <li><span>Email</span> : mittalprakhar504@gmail.com</li>
-                    <li><span>Phone</span> : +916377398830</li>
-                    <li><span>Address</span> :  Bhopal , India.</li>
-                </ul>
-                <ul class="social-icons pt-3">
-                    <li class="social-item"><a class="social-link" href="https://www.facebook.com/profile.php?id=100079016100026"><i class="ti-facebook" aria-hidden="true"></i></a></li>
-                    <li class="social-item"><a class="social-link" href="https://www.linkedin.com/in/its-prakhar-mittal"><i class="ti-linkedin" aria-hidden="true"></i></a></li>
-                    <li class="social-item"><a class="social-link" href="https://github.com/prakhau143"><i class="ti-github" aria-hidden="true"></i></a></li>
-                </ul>  
-            </div>
-                <div class="about-card">
-                <h3 class="font-weight-light">My Expertise</h3>
-                <span class="line mb-5"></span>
-                <div class="row">
-                    <div class="col-1 text-danger pt-1"><i class="ti-widget icon-lg"></i></div>
-                    <div class="col-10 ml-auto mr-3">
-                        <h6>Software Development</h6>
-                            <p class="subtitle">As a passionate and results-driven Java Software Developer, I specialize in building robust, scalable, and high-performance applications. My objective is to drive impactful software solutions by contributing technical expertise and a growth mindset.</p>
-                        <hr>
-                    </div>
+                    <h3 class="font-weight-light">Who am I ?</h3>
+                    <span class="line mb-5"></span>
+                    <h5 class="mb-3">A Software & Full-stack / Developer Located In Our Lovely Earth</h5>
+                    <p class="mt-20">I am an Automation-Driven Full Stack & AI Developer who builds intelligent systems that solve real-world problems. From scalable Django-React platforms to AI-powered tools and workflow automation, I focus on performance, optimization, and smart architecture. With strong DSA foundations and cloud expertise, I transform complex ideas into efficient digital products. I don’t just write code—I engineer scalable, automated, and future-ready solutions.</p>
+                    <p class="mt-20">When I start a project, I first focus on understanding the problem deeply rather than jumping into code. I break requirements into smaller modules and design a scalable architecture before development. I prefer building automation wherever possible to reduce manual effort and improve efficiency.</p>
+                    <p class="mt-20">I follow a structured approach: planning → prototyping → development → testing → optimization. I prioritize clean code, API efficiency, and database performance.</p>
+                    <p class="mt-20">For AI or data-driven systems, I validate models with proper testing and performance metrics. I also ensure smooth UI/UX when working with React or frontend technologies.</p>
+                    <p class="mt-20">Version control, CI/CD practices, and proper documentation are part of my workflow. I believe in building solutions that are not just functional, but scalable, maintainable, and future-ready.</p>
                 </div>
-                <div class="row">
-                    <div class="col-1 text-danger pt-1"><i class="ti-paint-bucket icon-lg"></i></div>
-                    <div class="col-10 ml-auto mr-3">
-                        <h6>Web Development</h6>
-                            <p class="subtitle">Building responsive and high-performance websites that are optimized for both user experience and technical efficiency. Bringing design concepts to life with clean, scalable code, ensuring cross-platform compatibility and seamless functionality.</p>
-                        <hr>
-                    </div>
+                <div class="about-card">
+                    <h3 class="font-weight-light">Personal Info</h3>
+                    <span class="line mb-5"></span>
+                    <ul class="mt40 info list-unstyled">
+                        <li><span>Birthdate</span> : 01/01/2003</li>
+                        <li><span>Email</span> : mittalprakhar504@gmail.com</li>
+                        <li><span>Phone</span> : +916377398830</li>
+                        <li><span>Address</span> :  Bhopal , India.</li>
+                    </ul>
+                    <ul class="social-icons pt-3">
+                        <li class="social-item"><a class="social-link" href="https://www.facebook.com/profile.php?id=100079016100026"><i class="ti-facebook" aria-hidden="true"></i></a></li>
+                        <li class="social-item"><a class="social-link" href="https://www.linkedin.com/in/its-prakhar-mittal"><i class="ti-linkedin" aria-hidden="true"></i></a></li>
+                        <li class="social-item"><a class="social-link" href="https://github.com/prakhau143"><i class="ti-github" aria-hidden="true"></i></a></li>
+                    </ul>
                 </div>
-                <div class="row">
-                    <div class="col-1 text-danger pt-1"><i class="ti-stats-up icon-lg"></i></div>
-                    <div class="col-10 ml-auto mr-3">
-                        <h6>Skills</h6>
-                            <p class="subtitle">I have strong technical skills centered around full-stack web development and computer science fundamentals. I am proficient in key programming languages like HTML/CSS, Java, MySQL, and JavaScript, and actively use popular frameworks like Express.js, React.js, and Node.js to build full-stack applications.</p>
-                        <hr>
+                <div class="about-card">
+                    <h3 class="font-weight-light">My Expertise</h3>
+                    <span class="line mb-5"></span>
+                    <div class="about-list">
+                        <div class="about-item">
+                            <div class="text-danger"><i class="ti-widget icon-lg"></i></div>
+                            <div>
+                                <h6>Software Development</h6>
+                                <p class="subtitle">As a passionate and results-driven Java Software Developer, I specialize in building robust, scalable, and high-performance applications. My objective is to drive impactful software solutions by contributing technical expertise and a growth mindset.</p>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="about-item">
+                            <div class="text-danger"><i class="ti-paint-bucket icon-lg"></i></div>
+                            <div>
+                                <h6>Web Development</h6>
+                                <p class="subtitle">Building responsive and high-performance websites that are optimized for both user experience and technical efficiency. Bringing design concepts to life with clean, scalable code, ensuring cross-platform compatibility and seamless functionality.</p>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="about-item">
+                            <div class="text-danger"><i class="ti-stats-up icon-lg"></i></div>
+                            <div>
+                                <h6>Skills</h6>
+                                <p class="subtitle">I have strong technical skills centered around full-stack web development and computer science fundamentals. I am proficient in key programming languages like HTML/CSS, Java, MySQL, and JavaScript, and actively use popular frameworks like Express.js, React.js, and Node.js to build full-stack applications.</p>
+                                <hr>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <section class="section bg-dark text-center d-flex align-items-center justify-content-center" style="min-height: 100 px;">
+    </section>
+    
+    <section class="section bg-dark text-center d-flex align-items-center justify-content-center" style="min-height: 100px;">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
@@ -295,119 +593,109 @@
             </div>
           </div>
         </div>
-      </section>
+		</section>
     <!--Resume Section-->
-    <section class="section" id="resume">
-        <div class="container">
-            <h2 class="mb-5"><span class="text-danger">My</span> Resume</h2>
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card">
-                       <div class="card-header">
-                            <div class="mt-2">
-                                <h4>Expertise</h4>
-                                <span class="line"></span>  
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="title text-danger">2023 - 2024</h6>
-<p>Web Developer Intern, Ethanus Pvt. ltd.</p>
-<p class="subtitle">As a Web Developer intern, I contributed to designing and developing responsive websites using modern web technologies. I collaborated with teams to implement user-friendly features and optimized website performance, ensuring seamless user experiences. My role involved working with HTML, CSS, JavaScript, and frameworks to deliver impactful web solutions.</p>
-                            <hr>
-                            <h6 class="title text-danger">Mar 2025 - MAY 2025</h6>
-<p>As a frontend developer at Devfrend</p>
-<p class="subtitle">As a Frontend Developer at DevFrend Websolutions, I design and develop responsive, user-friendly web interfaces using HTML, CSS, JavaScript, and modern frameworks. I collaborate with UI/UX designers and backend teams to deliver seamless user experiences, optimize performance, and ensure cross-browser compatibility across platforms.</p>
-                            <hr>
-                            <h6 class="title text-danger">MAY 2025 - Present</h6>
-                            <p>As a Python developer at KreativeTimeBox</p>
-                            <p>As a Python Developer, I developed backend APIs and automation scripts using Python and Flask to streamline workflows and improve
-                                system efficiency.I also worked on data processing, integrating third-party APIs, and building scalable solutions for real-time application needs.</p>
-                        </div>
-                            <p class="subtitle">
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card">
-                       <div class="card-header">
-                            <div class="mt-2">
-                                <h4>Education</h4>
-                                <span class="line"></span>  
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="title text-danger">2021-2025 - Present</h6>
-                            <h4>Vellore Insititute Of Technology - Bhopal</h4>
-                            <P class="subtitle">I am pursuing a B.Tech in Computer Science and Engineering at VIT Bhopal.</P>
-                            <hr>
-                            <h4 class="title text-danger">Higher Secondary Education</h4>
-                            <h6>Rajsthan Board of Secondary Education</h6>
-                            <p class="subtitle">Laxmi Shiksha Niketan bari, Dholpur, Rajasthan</p>
-                            <hr>
-                            <h4 class="title text-danger">Secondary Education</h4>
-                            <h6> Rajsthan Board of Secondary Education</h6>
-                            <P class="subtitle">Adarsh Vidya Mandir bari , Dholpur, Rajasthan</P>
-                            
+    <section class="section section-bg resume-bg" id="resume">
+        <canvas class="stars"></canvas>
+        <div class="section-content">
+            <h2 class="section-title mb-0"><span class="text-danger">My</span> Resume</h2>
+            <div class="resume-grid">
+                <article class="card">
+                    <div class="card-header">
+                        <div class="mt-2">
+                            <h4>Expertise</h4>
+                            <span class="line"></span>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                       <div class="card-header">
-                            <div class="pull-left">
-                                <h4 class="mt-2">Skills</h4>
-                                <span class="line"></span>  
-                            </div>
-                        </div>
-                        <div class="card-body pb-2">
-                           <h4 class="mt-2">Technical Skills</h4>
-                           <span class="line mb-3"></span>
-                           <h6>HTML5 &amp; CSS3</h6>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 97%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h6>JavaScript</h6>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h6>Java</h6>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h6>SQL</h6>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h6>Python</h6>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h6>UI/UX</h6>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h6>Reactjs</h6>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            
-                            <h4 class="mt-4">Languages</h4>
-                            <span class="line mb-3"></span>
-                            <h6>English</h6>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h6>Hindi</h6>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h6>Sanskrit</h6>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 57%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                    <div class="card-body">
+                        <h6 class="title text-danger">Aug 2025 – Present</h6>
+                        <p>Python Django Developer AT Kwikster Innovative Optimisations Pvt. Ltd</p>
+                        <p class="subtitle">Currently working as a Full-Stack Developer, focusing on building scalable web applications using Django and React. I design and integrate RESTful APIs, automate business workflows, and optimize database performance. I also work with AWS, Docker, and CI/CD pipelines to ensure high availability, smooth deployments, and production-ready systems.</p>
+                        <hr>
+                        <h6 class="title text-danger">May 2025 – Aug 2025</h6>
+                        <p>As a Python Developer AT KreativeTimeBox</p>
+                        <p class="subtitle">Developed backend APIs and automation scripts using Python and Flask to streamline internal operations. Worked on data processing, third-party API integrations, and built scalable backend systems to support real-time applications. Improved system efficiency through performance optimization and structured code architecture.</p>
+                        <hr>
+                        <h6 class="title text-danger">Jan 2025 – Apr 2025</h6>
+                        <p>DSA Trainer & Software Developer AT SIX PHRASE</p>
+                        <p class="subtitle">Delivered structured training in C, C++, Java, and Data Structures & Algorithms. Designed coding assignments, conducted live problem-solving sessions, and mentored students for technical interviews and competitive programming. Focused on logic building, clean coding practices, and industry-oriented learning approaches.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-header">
+                        <div class="mt-2">
+                            <h4>Education</h4>
+                            <span class="line"></span>
                         </div>
                     </div>
-
-                </div>
+                    <div class="card-body">
+                        <h6 class="title text-danger">2021-2025</h6>
+                        <h4>Vellore Institute Of Technology</h4>
+                        <p class="subtitle">I am pursuing a B.Tech in Computer Science and Engineering at VIT Bhopal.</p>
+                        <hr>
+                        <h4 class="title text-danger">Higher Secondary Education</h4>
+                        <h6>Rajasthan Board of Secondary Education</h6>
+                        <p class="subtitle">Laxmi Shiksha Niketan bari, Dholpur, Rajasthan</p>
+                        <hr>
+                        <h4 class="title text-danger">Secondary Education</h4>
+                        <h6>Rajasthan Board of Secondary Education</h6>
+                        <p class="subtitle">Adarsh Vidya Mandir bari, Dholpur, Rajasthan</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-header">
+                        <div class="pull-left">
+                            <h4 class="mt-2">Skills</h4>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="card-body pb-2">
+                        <h4 class="mt-2">Technical Skills</h4>
+                        <span class="line mb-3"></span>
+                        <h6>HTML5 &amp; CSS3</h6>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 97%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h6>JavaScript</h6>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h6>Java</h6>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h6>SQL</h6>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h6>Python</h6>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h6>UI/UX</h6>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h6>Reactjs</h6>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h4 class="mt-4">Languages</h4>
+                        <span class="line mb-3"></span>
+                        <h6>English</h6>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h6>Hindi</h6>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <h6>Sanskrit</h6>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 57%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -425,105 +713,91 @@
       </section>
 
 
-    <section class="section" id="service">
-        <div class="container">
-            <h2 class="mb-5 pb-4"><span class="text-danger">My</span> Certificates</h2>
-            <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-5">
-                       <div class="card-header has-icon">
-                            <i class="ti-vector text-danger" aria-hidden="true"></i>
-                        </div>
-                        <div class="card-body px-4 py-3">
-                            <h5 class="mb-3 card-title text-dark">NPTEL Cloud Computing </h5>
-                            <p class="subtitle">
-                                I successfully completed the Cloud Computing course offered by the Indian Institute of Technology (IIT) Kharagpur through the NPTEL Swayam platform in April 2024, achieving an Elite certification with a consolidated score of 69%. This intensive 12-week program provided me with in-depth knowledge of cloud service models (IaaS, PaaS, SaaS), cloud architecture, virtualization techniques, and resource management. I also gained hands-on experience in understanding cloud deployment models (public, private, hybrid) and key concepts like scalability, cloud security, and cost optimization.
-                                <br><br>
-                                <a href="https://drive.google.com/file/d/13Krgcxh6amf09RGio-ndIu0evz3_lzHd/view?usp=sharing" target="_blank" style="color: blue; text-decoration: underline;">View Certification</a>
-                            </p>
-                        </div>
+    <section class="section section-bg service-bg" id="service">
+        <canvas class="stars"></canvas>
+        <div class="section-content">
+            <h2 class="section-title mb-0 pb-4"><span class="text-danger">My</span> Certificates</h2>
+            <div class="certificates-grid">
+                <article class="card">
+                    <div class="card-header has-icon">
+                        <i class="ti-vector text-danger" aria-hidden="true"></i>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-5">
-                       <div class="card-header has-icon">
-                            <i class="ti-write text-danger" aria-hidden="true"></i>
-                        </div>
-                        <div class="card-body px-4 py-3">
-                            <h5 class="mb-3 card-title text-dark">AWS Certified Cloud Practitioner</h5>
-                            <p class="subtitle">
-                                I am certified in the <strong>AWS Cloud Computing Which is held by AWS. </strong>My understanding of the foundational concepts involving cloud technology with Amazon Web Services (AWS) was validated through the AWS Certified Cloud Practitioner certification, which I earned on March 10, 2024. The certification itself illustrates my knowledge of the main fundamental services encompassed in AWS, cloud concepts, architectural principles along with security and compliance, billing as well as pricing models, and support structure.
-                                <br><br>
-                                <a href="https://drive.google.com/file/d/1VabzlHpogAJ9_PF8g5Sfr3trikE7ufBO/view?usp=sharing" target="_blank" style="color: blue; text-decoration: underline;">View Certification</a>
-                            </p>
-                        </div>
-                        
+                    <div class="card-body px-4 py-3">
+                        <h5 class="mb-3 card-title text-dark">NPTEL Cloud Computing</h5>
+                        <p class="subtitle">
+                            I successfully completed the Cloud Computing course offered by the Indian Institute of Technology (IIT) Kharagpur through the NPTEL Swayam platform in April 2024, achieving an Elite certification with a consolidated score of 69%. This intensive 12-week program provided me with in-depth knowledge of cloud service models (IaaS, PaaS, SaaS), cloud architecture, virtualization techniques, and resource management. I also gained hands-on experience in understanding cloud deployment models (public, private, hybrid) and key concepts like scalability, cloud security, and cost optimization.
+                            <br><br>
+                            <a href="https://drive.google.com/file/d/13Krgcxh6amf09RGio-ndIu0evz3_lzHd/view?usp=sharing" target="_blank" rel="noopener" style="color: #dc3545; text-decoration: underline;">View Certification</a>
+                        </p>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-5">
-                       <div class="card-header has-icon">
-                            <i class="ti-package text-danger" aria-hidden="true"></i>
-                        </div>
-                        <div class="card-body px-4 py-3">
-                            <h5 class="mb-3 card-title text-dark">the Robothon Workshop and Competition</h5>
-                            <p class="subtitle">
-                                I received a Certificate of Excellence for my involvement in the Robothon Workshop and Competition from July 21 to September 3, 2022, organized by the Robotics Club of VIT Bhopal University. I received 2nd prize in the competition owing to my versatility in problem-solving robotic systems with reasoned and innovative approaches. My rank allowed me to build on skills obtained during the workshop, which included designing and simulating robotic race tracks as well as functioning within a team for automation projects on embedded systems..
-                                <br><br>
-                                <a href="https://drive.google.com/file/d/1-99_hzKRaNISBJUcbLuFSGtSWEG8Kzln/view?usp=sharing" target="_blank" style="color: blue; text-decoration: underline;">View Certificate</a>
-                            </p>
-                        </div>
+                </article>
+                <article class="card">
+                    <div class="card-header has-icon">
+                        <i class="ti-write text-danger" aria-hidden="true"></i>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-5">
-                       <div class="card-header has-icon">
-                            <i class="ti-map-alt text-danger" aria-hidden="true"></i>
-                        </div>
-                        <div class="card-body px-4 py-3">
-                            <h5 class="mb-3 card-title text-dark">Applied Machine Learning in Python</h5>
-                            <p class="subtitle">
-                                I finished the Applied Machine Learning in Python course from the University of Michigan through Coursera. This course gave me a solid grounding in practical machine learning implemented with Python. I learned about supervised and unsupervised learning, feature extraction, model assessment, and how to work with important libraries like scikit-learn and pandas.
-                            </p>
-                            <a href="https://drive.google.com/file/d/1YECBws1NRuRKC-PEUBVI4GSZJCh7N0YP/view?usp=sharing" target="_blank">View Certificate</a>
-                        </div>
-                        
+                    <div class="card-body px-4 py-3">
+                        <h5 class="mb-3 card-title text-dark">AWS Certified Cloud Practitioner</h5>
+                        <p class="subtitle">
+                            I am certified in the <strong>AWS Cloud Computing Which is held by AWS.</strong> My understanding of the foundational concepts involving cloud technology with Amazon Web Services (AWS) was validated through the AWS Certified Cloud Practitioner certification, which I earned on March 10, 2024. The certification itself illustrates my knowledge of the main fundamental services encompassed in AWS, cloud concepts, architectural principles along with security and compliance, billing as well as pricing models, and support structure.
+                            <br><br>
+                            <a href="https://drive.google.com/file/d/1VabzlHpogAJ9_PF8g5Sfr3trikE7ufBO/view?usp=sharing" target="_blank" rel="noopener" style="color: #dc3545; text-decoration: underline;">View Certification</a>
+                        </p>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-5">
-                       <div class="card-header has-icon">
-                            <i class="ti-bar-chart text-danger" aria-hidden="true"></i>
-                        </div>
-                        <div class="card-body px-4 py-3">
-                            <h5 class="mb-3 card-title text-dark">MERN Full Stack</h5>
-                            <p class="subtitle">
-                                I recently wrapped up a MERN Full Stack Internship Program with Ethnus, which ran from August to November 2023. I dedicated over 100 hours to hands-on learning and development during this time. This internship really helped me dive into building dynamic web applications using the MERN stack—MongoDB, Express.js, React.js, and Node.js. I picked up valuable skills in full-stack application architecture, creating RESTful APIs, frontend development, and managing databases.
-                            </p>
-                            <a href="https://drive.google.com/file/d/1BhOS4X1JKX1rwJAdB6f3h0pecUVNK6n9/view?usp=sharing" target="_blank">View Certificate</a>
-                        </div>
+                </article>
+                <article class="card">
+                    <div class="card-header has-icon">
+                        <i class="ti-package text-danger" aria-hidden="true"></i>
                     </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="card mb-5">
-                   <div class="card-header has-icon">
+                    <div class="card-body px-4 py-3">
+                        <h5 class="mb-3 card-title text-dark">Robothon Workshop and Competition</h5>
+                        <p class="subtitle">
+                            I received a Certificate of Excellence for my involvement in the Robothon Workshop and Competition from July 21 to September 3, 2022, organized by the Robotics Club of VIT Bhopal University. I received 2nd prize in the competition owing to my versatility in problem-solving robotic systems with reasoned and innovative approaches. My rank allowed me to build on skills obtained during the workshop, which included designing and simulating robotic race tracks as well as functioning within a team for automation projects on embedded systems.
+                            <br><br>
+                            <a href="https://drive.google.com/file/d/1-99_hzKRaNISBJUcbLuFSGtSWEG8Kzln/view?usp=sharing" target="_blank" rel="noopener" style="color: #dc3545; text-decoration: underline;">View Certificate</a>
+                        </p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-header has-icon">
+                        <i class="ti-map-alt text-danger" aria-hidden="true"></i>
+                    </div>
+                    <div class="card-body px-4 py-3">
+                        <h5 class="mb-3 card-title text-dark">Applied Machine Learning in Python</h5>
+                        <p class="subtitle">
+                            I finished the Applied Machine Learning in Python course from the University of Michigan through Coursera. This course gave me a solid grounding in practical machine learning implemented with Python. I learned about supervised and unsupervised learning, feature extraction, model assessment, and how to work with important libraries like scikit-learn and pandas.
+                        </p>
+                        <a href="https://drive.google.com/file/d/1YECBws1NRuRKC-PEUBVI4GSZJCh7N0YP/view?usp=sharing" target="_blank" rel="noopener" style="color: #dc3545; text-decoration: underline;">View Certificate</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-header has-icon">
+                        <i class="ti-bar-chart text-danger" aria-hidden="true"></i>
+                    </div>
+                    <div class="card-body px-4 py-3">
+                        <h5 class="mb-3 card-title text-dark">MERN Full Stack</h5>
+                        <p class="subtitle">
+                            I recently wrapped up a MERN Full Stack Internship Program with Ethnus, which ran from August to November 2023. I dedicated over 100 hours to hands-on learning and development during this time. This internship really helped me dive into building dynamic web applications using the MERN stack—MongoDB, Express.js, React.js, and Node.js. I picked up valuable skills in full-stack application architecture, creating RESTful APIs, frontend development, and managing databases.
+                        </p>
+                        <a href="https://drive.google.com/file/d/1BhOS4X1JKX1rwJAdB6f3h0pecUVNK6n9/view?usp=sharing" target="_blank" rel="noopener" style="color: #dc3545; text-decoration: underline;">View Certificate</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-header has-icon">
                         <i class="ti-bar-chart text-danger" aria-hidden="true"></i>
                     </div>
                     <div class="card-body px-4 py-3">
                         <h5 class="mb-3 card-title text-dark">Junior Frontend Developer</h5>
                         <p class="subtitle">
-                            From May 15, 2025 to June 15, 2025, I had the opportunity to work as a Frontend Developer Intern at Devfrend Web Solutions. During this one-month internship, I actively contributed to the development team by building and refining user interfaces for client-facing web applications.
-Throughout the internship, I demonstrated my skills in HTML, CSS, JavaScript, and React.js, focusing on creating responsive, dynamic, and visually appealing web components. I collaborated with designers and backend developers to ensure seamless integration and functionality.
-I was appreciated by the team, including the CEO and Founder, Amar Gupta, for my problem-solving ability, teamwork, and dedication. This experience helped me strengthen my technical foundation and gain valuable insight into real-world project execution and agile workflows.
+                            From May 15, 2025 to June 15, 2025, I had the opportunity to work as a Frontend Developer Intern at Devfrend Web Solutions. During this one-month internship, I actively contributed to the development team by building and refining user interfaces for client-facing web applications. Throughout the internship, I demonstrated my skills in HTML, CSS, JavaScript, and React.js, focusing on creating responsive, dynamic, and visually appealing web components. I collaborated with designers and backend developers to ensure seamless integration and functionality. I was appreciated by the team, including the CEO and Founder, Amar Gupta, for my problem-solving ability, teamwork, and dedication. This experience helped me strengthen my technical foundation and gain valuable insight into real-world project execution and agile workflows.
                         </p>
-                        <a href="https://drive.google.com/file/d/10RcQF-I2HFv9Y3_GcoT7YsOi_T-INUZh/view?usp=sharing" target="_blank">View Certificate</a>
+                        <a href="https://drive.google.com/file/d/10RcQF-I2HFv9Y3_GcoT7YsOi_T-INUZh/view?usp=sharing" target="_blank" rel="noopener" style="color: #dc3545; text-decoration: underline;">View Certificate</a>
                     </div>
-                </div>
-        </div>
+                </article>
+            </div>
         </div>
     </section>
 
-    <section class="section bg-dark py-5" style="min-height: 100 px;">
+    <section class="section bg-dark py-5" style="min-height: 100px;">
         <div class="container text-center">
             <h2 class="text-light mb-5 font-weight-normal">I Am Currently Seeking Opportunities</h2>
             <a href="https://www.linkedin.com/in/its-prakhar-mittal" target="_blank">
@@ -533,9 +807,10 @@ I was appreciated by the team, including the CEO and Founder, Amar Gupta, for my
     </section>
 
     <!-- Projects Section -->
-    <section class="section" id="projects">
+    <section class="section section-bg projects-bg" id="projects">
+        <canvas class="stars"></canvas>
         <div class="container">
-            <h2 class="mb-5"><span class="text-danger">My</span> Projects</h2>
+            <h2 class="mb-5"><span class="text-danger">My</span><span style="color: #ff0000;"> Projects</span></h2>
             <div class="row">
                 <div class="col-md-3 mb-4">
                     <div class="card">
@@ -581,6 +856,36 @@ I was appreciated by the team, including the CEO and Founder, Amar Gupta, for my
                             <p class="card-text">Responsive coffee shop website built with HTML, CSS & JavaScript featuring smooth animations.</p>
                             <div class="mt-3">
                                 <a href="https://github.com/prakhau143/coffee-website-main" target="_blank" class="btn btn-danger btn-sm">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/detect.png" class="card-img-top" alt="AI Smart Language Detection">
+                        <div class="card-body">
+                            <h5 class="card-title">AI Smart Language Detection</h5>
+                            <p class="card-text">
+                                AI-powered system that detects and classifies language from text input using NLP and machine learning models.
+                            </p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/ashwam-be-ml-intern-Prakhar-Mittal" target="_blank" class="btn btn-danger btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/4in1row.webp" class="card-img-top" alt="4 in a Row Game">
+                        <div class="card-body">
+                            <h5 class="card-title">4 in a Row Game</h5>
+                            <p class="card-text">
+                                Interactive Connect-4 style browser game built with JavaScript featuring dynamic win detection and animations.
+                            </p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/4_in_row" target="_blank" class="btn btn-danger btn-sm">View Project</a>
                             </div>
                         </div>
                     </div>
@@ -637,6 +942,84 @@ I was appreciated by the team, including the CEO and Founder, Amar Gupta, for my
                             <p class="card-text">This application is dedicated to fostering physical and mental well-being. It offers an array of resources, from comprehensive guides on diverse yoga and meditation practices to schedules for classes and workshops, all conducted by professionals in the field</p>
                             <div class="mt-3">
                                 <a href="https://yoga-project-mu.vercel.app" class="btn btn-danger btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/autodialer.avif" class="card-img-top" alt="AI Auto Dialer">
+                        <div class="card-body">
+                            <h5 class="card-title">AI Auto Dialer</h5>
+                            <p class="card-text">AI-powered automated calling system with smart lead routing and voice interaction.</p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/auto-dialer.git" target="_blank" class="btn btn-danger btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/email_marketer.avif" class="card-img-top" alt="AI Email Marketing">
+                        <div class="card-body">
+                            <h5 class="card-title">AI Email Marketing</h5>
+                            <p class="card-text">AI-driven email automation system for personalized campaigns and smart analytics.</p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/bulk-email.git" target="_blank" class="btn btn-danger btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/ems.jpeg" class="card-img-top" alt="Employee Management System">
+                        <div class="card-body">
+                            <h5 class="card-title">EMS (Employee Management System)</h5>
+                            <p class="card-text">Full-stack system to manage employees, payroll, attendance and HR workflows.</p>
+                            <div class="mt-3">
+                                <a href="https://github.com/kwikster285/ems.git" target="_blank" class="btn btn-danger btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/hiring.png" class="card-img-top" alt="AI KwikHire Test">
+                        <div class="card-body">
+                            <h5 class="card-title">AI KwikHire Test</h5>
+                            <p class="card-text">AI-based technical assessment platform with auto-evaluation and performance tracking.</p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/aptitude-project.git" target="_blank" class="btn btn-danger btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/whatsapp-bulk-sender-screenshot.avif" class="card-img-top" alt="WhatsApp Bulk Message Sender">
+                        <div class="card-body">
+                            <h5 class="card-title">WhatsApp Bulk Message Sender</h5>
+                            <p class="card-text">Automation tool to send personalized bulk WhatsApp messages efficiently.</p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/whatsapp-message-bot.git" target="_blank" class="btn btn-danger btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="assets/imgs/princess.jpg" class="card-img-top" alt="Jewellery Ecommerce Platform">
+                        <div class="card-body">
+                            <h5 class="card-title">Jewellery Ecommerce Platform</h5>
+                            <p class="card-text">Premium jewellery online store with cart, payment integration and admin dashboard.</p>
+                            <div class="mt-3">
+                                <a href="https://github.com/prakhau143/Princesss.git" target="_blank" class="btn btn-danger btn-sm">View Project</a>
                             </div>
                         </div>
                     </div>
@@ -736,6 +1119,58 @@ I was appreciated by the team, including the CEO and Founder, Amar Gupta, for my
         }
         
         // Map is embedded as an iframe
+    </script>
+    <script>
+        function createStars(canvas) {
+            const ctx = canvas.getContext("2d");
+            let stars = [];
+            let numStars = window.innerWidth < 768 ? 40 : 80;
+
+            function resize() {
+                const dpr = Math.max(1, window.devicePixelRatio || 1);
+                const cssWidth = canvas.offsetWidth;
+                const cssHeight = canvas.offsetHeight;
+                canvas.width = Math.floor(cssWidth * dpr);
+                canvas.height = Math.floor(cssHeight * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+
+            resize();
+            window.addEventListener("resize", resize);
+
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * canvas.offsetWidth,
+                    y: Math.random() * canvas.offsetHeight,
+                    radius: Math.random() * 2,
+                    speed: Math.random() * 0.5 + 0.2
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+                ctx.fillStyle = "white";
+
+                stars.forEach(star => {
+                    star.y += star.speed;
+
+                    if (star.y > canvas.offsetHeight) {
+                        star.y = 0;
+                        star.x = Math.random() * canvas.offsetWidth;
+                    }
+
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        document.querySelectorAll("canvas.stars").forEach(createStars);
     </script>
     <!-- Sparkle Cursor Effect -->
 <style>
