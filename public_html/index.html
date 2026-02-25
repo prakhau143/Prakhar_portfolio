@@ -27,6 +27,11 @@
     <title>Prakhar Mittal | UI/UX Portfolio</title>
     <link rel="icon" type="image/png" href="assets/imgs/p.png">
     <!-- font icons -->
+     <!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Devicon Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">  
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + JohnDoe main styles -->
@@ -35,6 +40,146 @@
     <link rel="stylesheet" href="assets/css/custom-animations.css">
     <!-- Fix for horizontal scrolling and project card styling -->
     <style>
+        /* ===== 3D SKILL PROGRESS BAR ===== */
+
+.skill-progress {
+    margin-bottom: 18px;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.skill-info span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 3D Base */
+.progress-3d {
+    height: 12px;
+    background: #e6e6e6;
+    border-radius: 30px;
+    box-shadow:
+        inset 4px 4px 8px rgba(0,0,0,0.1),
+        inset -4px -4px 8px rgba(255,255,255,0.8);
+    overflow: hidden;
+}
+
+/* Fill */
+.progress-fill {
+    height: 100%;
+    width: 0;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff4d4d, #ff0000);
+    box-shadow:
+        0 4px 10px rgba(255,0,0,0.4),
+        inset -2px -2px 6px rgba(255,255,255,0.4);
+    transition: width 1.4s ease;
+}
+        /* Same card styling as other resume cards */
+.skills-section {
+    padding: 5px 0;
+}
+
+.skills-section .container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* Section Header */
+.section-header {
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+
+.section-header p {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Skill Cards */
+.skill-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    transition: 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Title */
+.skill-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Skill items */
+.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #f5f5f5;
+    border-radius: 25px;
+    font-size: 13px;
+    transition: 0.3s ease;
+}
+
+.skill-item:hover {
+    background: #ff4d4d;
+    color: white;
+}
+
+.skill-item i {
+    font-size: 16px;
+}
+        .section-lightning,
+#navbar-electric {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.electric-section::before,
+.main-navbar::before {
+    z-index: 2;
+}
+
+.electric-section .container,
+.main-navbar .container {
+    position: relative;
+    z-index: 3;
+}
         html {
             scroll-behavior: smooth;
         }
@@ -433,6 +578,440 @@
             position: relative;
             z-index: 2;
         }
+        /* ===== GLOBAL LAYOUT FIXES ===== */
+body {
+    border: none !important;
+}
+
+html {
+    background: #000 !important;
+}
+
+.section {
+    margin-bottom: 0 !important;
+}
+
+/* ===== MOBILE NAVBAR (5 ITEMS IN ONE ROW) ===== */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background: #ffffff;
+        padding: 10px 0;
+    }
+
+    .navbar-nav {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 0 !important;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 8px 6px !important;
+        text-align: center;
+    }
+
+    .navbar-nav.brand {
+        display: none !important;
+    }
+}
+
+/* ===== NAVBAR ELECTRIC BACK5 (DESKTOP) ===== */
+@keyframes electricity {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@media (min-width: 992px) {
+    .navbar {
+        background: url('assets/imgs/back5.png') center/cover no-repeat !important;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .navbar::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -100%;
+        width: 200%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #00ffff, transparent);
+        animation: electricity 2.5s linear infinite;
+    }
+
+    .navbar .nav-link {
+        color: #fff !important;
+        font-weight: 600;
+    }
+
+    .navbar .brand-title,
+    .navbar .brand-subtitle {
+        color: #fff !important;
+    }
+}
+
+/* ===== ELECTRIC BACK5 SECTIONS ===== */
+/* Use with: <section class="section electric-section text-center d-flex align-items-center justify-content-center"> */
+
+.electric-section {
+    position: relative;
+    min-height: 320px;
+    background: url('assets/imgs/back5.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Safety override if bg-dark still present */
+.electric-section.bg-dark {
+    background: url('assets/imgs/back5.png') center/cover no-repeat !important;
+}
+
+/* Dark overlay for readability */
+.electric-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+/* Electricity effect across section */
+.electric-section::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    width: 200%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00ffff, #ffffff, #00ffff, transparent);
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+    animation: electricity 2.5s linear infinite;
+    z-index: 2;
+}
+
+/* Content above overlays */
+.electric-section .container {
+    position: relative;
+    z-index: 3;
+}
+
+.electric-section h2,
+.electric-section h3 {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Consistent responsive height */
+@media (max-width: 768px) {
+    .electric-section {
+        min-height: 250px;
+        padding: 40px 20px;
+    }
+}
+/* ===========================
+   SECTION BACKGROUNDS & CARDS
+   =========================== */
+
+/* Base for all image sections */
+.section-bg {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; /* avoid mobile fixed glitch */
+    overflow: hidden;
+}
+
+/* Exact mapping of back images */
+#resume.section-bg {
+    background-image: url('assets/imgs/back1.png');
+}
+
+#projects.section-bg {
+    background-image: url('assets/imgs/back2.png');
+}
+
+#service.section-bg {
+    background-image: url('assets/imgs/back3.png');
+}
+
+#about.section-bg {
+    background-image: url('assets/imgs/back4.png');
+}
+
+/* Remove dark overlays from image sections (background must stay visible) */
+.section-bg::before {
+    content: none !important;
+}
+
+/* Ensure containers over images are transparent */
+.section-bg > .container,
+#resume .section-content,
+#service .section-content,
+#about .about-wrap {
+    background: transparent !important;
+}
+
+/* Pure white cards, no glass blur, strong separation from background */
+#resume .card,
+#service .card,
+#projects .card,
+#about .about-card {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+}
+
+/* Cards content readable, text wraps nicely */
+#resume .card .card-body,
+#service .card .card-body,
+#projects .card .card-body,
+#about .about-card {
+    color: #111827;
+}
+
+/* Stars canvas layout (all sections except navbar & electric sections) */
+.section-bg canvas.stars,
+.header canvas.stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Content sits above stars */
+.section-bg > .container,
+.header .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Remove any accidental margin gaps between sections */
+.section {
+    margin-bottom: 0 !important;
+}
+
+/* ===========================
+   ELECTRIC BACK5 SECTIONS (3 QUOTES)
+   =========================== */
+
+.electric-section {
+    position: relative;
+    min-height: 30vh;
+    background: url('assets/imgs/back5.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+.electric-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+/* Horizontal electric line across section */
+.electric-section::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -120%;
+    width: 240%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00ffff, #ffffff, #00ffff, transparent);
+    box-shadow: 0 0 18px #00ffff, 0 0 36px #00ffff;
+    animation: sectionElectricFlow 2.8s linear infinite;
+    z-index: 2;
+}
+
+@keyframes sectionElectricFlow {
+    0% { left: -120%; }
+    100% { left: 120%; }
+}
+
+/* Content inside electric sections above overlays */
+.electric-section .container {
+    position: relative;
+    z-index: 3;
+}
+
+.electric-section .electric-heading {
+    color: #ffffff;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Mobile tightening */
+@media (max-width: 768px) {
+    .electric-section {
+        min-height: 60vh;
+        padding: 40px 16px;
+    }
+
+    .electric-section .electric-heading {
+        font-size: 1.2rem;
+    }
+}
+
+/* ===========================
+   NAVBAR BACKGROUND & ELECTRIC CANVAS
+   =========================== */
+
+.main-navbar {
+    background: url('assets/imgs/back5.png') center/cover no-repeat !important;
+    position: sticky;
+    top: 0;
+    z-index: 1040;
+    box-shadow: none !important;
+    border-bottom: none !important;
+    transform: none !important;
+}
+
+/* Dark overlay for readability */
+.main-navbar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 0;
+}
+
+/* Container + content above overlay and electric canvas */
+.main-navbar .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Electric canvas under content, above dark overlay */
+.navbar-electric {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Navbar text colors */
+.main-navbar .nav-link,
+.main-navbar .brand-title,
+.main-navbar .brand-subtitle {
+    color: #f9fafb !important;
+    font-weight: 500;
+}
+
+/* Remove any bottom sky-blue lines / hover underlines */
+.main-navbar .nav-link::after {
+    display: none !important;
+}
+
+/* ===========================
+   MOBILE NAV (5 LINKS IN ONE ROW)
+   =========================== */
+
+@media (max-width: 768px) {
+    /* Always show menu; no dropdown-style overlay */
+    .main-navbar .navbar-toggler {
+        display: none;
+    }
+
+    .main-navbar .navbar-collapse {
+        display: block !important;
+        width: 100%;
+        padding: 8px 0 4px;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    /* One horizontal row, scrollable if needed */
+    .main-navbar .navbar-nav {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap;
+        gap: 12px;
+        justify-content: space-between;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .main-navbar .navbar-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .main-navbar .navbar-nav .nav-item {
+        flex: 0 0 auto;
+        margin: 0 !important;
+    }
+
+    .main-navbar .navbar-nav .nav-link {
+        font-size: 13px;
+        padding: 8px 10px !important;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    /* Hide center brand block on mobile to give more space */
+    .main-navbar .navbar-nav.brand {
+        display: none !important;
+    }
+}
+
+/* ===========================
+   HEADER CLEANUP (NO INLINE STYLE NEEDED)
+   =========================== */
+
+.header {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background:
+        linear-gradient(135deg, rgba(220, 53, 69, 0.7) 0%, rgba(52, 58, 64, 0.7) 100%),
+        url('assets/imgs/header.jpg') center center/cover no-repeat;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Keep header stars sharp and behind content */
+.header canvas.stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.header .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===========================
+   GLOBAL TWEAKS
+   =========================== */
+
+html, body {
+    background-color: #000000;
+    overflow-x: hidden;
+    max-width: 100%;
+}
         /* ===== FORCE ABOUT CARDS PURE WHITE ===== */
 
 #about .about-card {
@@ -461,8 +1040,8 @@
     </style>
 </head>
 <body  id="home">
-    <div id="dark-overlay"></div>
-    <a href="components.html" class="btn btn-primary btn-component"><i class="ti-shift-left-alt"></i> Components</a>
+    <!-- <div id="dark-overlay"></div> -->
+    <!-- <a href="components.html" class="btn btn-primary btn-component"><i class="ti-shift-left-alt"></i> Components</a> -->
     <header class="header" style="
     padding-top: 60px; 
     padding-bottom: 60px; 
@@ -485,13 +1064,19 @@
             </div>
         </div>
     </header>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container">
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark main-navbar">
+        <div class="container position-relative">
+            <canvas id="navbar-electric" class="navbar-electric"></canvas>
+    
+            <button class="navbar-toggler ms-auto" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse mt-sm-20 navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+    
+            <div class="collapse navbar-collapse mt-sm-20" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto main-nav-left">
                     <li class="nav-item">
                         <a href="#home" class="nav-link">Home</a>
                     </li>
@@ -502,16 +1087,18 @@
                         <a href="#resume" class="nav-link">Resume</a>
                     </li>
                 </ul>
+    
                 <ul class="navbar-nav brand">
                     <img src="assets/imgs/avatar.jpeg" alt="" class="brand-img">
                     <li class="brand-txt">
                         <h5 class="brand-title">Prakhar Mittal</h5>
-                        <div class="brand-subtitle">Software & Full-stack | Developer</div>
+                        <div class="brand-subtitle">Software &amp; Full-stack | Developer</div>
                     </li>
                 </ul>
-                <ul class="navbar-nav ml-auto">
+    
+                <ul class="navbar-nav ms-auto main-nav-right">
                     <li class="nav-item">
-                        <a href="#portfolio" class="nav-link">Portfolio</a>
+                        <a href="#projects" class="nav-link">Portfolio</a>
                     </li>
                     <li class="nav-item last-item">
                         <a href="#contact" class="nav-link">Contact</a>
@@ -583,17 +1170,18 @@
         </div>
     </section>
     
-    <section class="section bg-dark text-center d-flex align-items-center justify-content-center" style="min-height: 100px;">
+    <section class="section electric-section text-center d-flex align-items-center justify-content-center">
+        <canvas class="section-lightning"></canvas>
         <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 style="color: white;">
-                Make it work, make it right, make it fast.
-              </h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="electric-heading">
+                        Make it work, make it right, make it fast.
+                    </h3>
+                </div>
             </div>
-          </div>
         </div>
-		</section>
+    </section>
     <!--Resume Section-->
     <section class="section section-bg resume-bg" id="resume">
         <canvas class="stars"></canvas>
@@ -643,74 +1231,204 @@
                     </div>
                 </article>
                 <article class="card">
-                    <div class="card-header">
-                        <div class="pull-left">
-                            <h4 class="mt-2">Skills</h4>
-                            <span class="line"></span>
+                    <h2 style="margin-left: 20px;">Technical Expertise</h2>
+                    <h3 style="margin-left: 20px;">Automation • AI • Full Stack Development</h3>
+                    <section class="skills-section">
+                        <!-- <h3 style="margin-left: 20px;">Automation • AI • Full Stack Development</h3> -->
+                        <div class="container">
+                            <div class="section-header">
+                                <!-- <h2>Automation • AI • Full Stack Development</h2> -->
+                                <!-- <p>Automation • AI • Full Stack Development</p> -->
+                            </div>
+                    
+                            <div class="skills-grid">
+                    
+                                <!-- Programming Languages -->
+                                <div class="skill-card">
+                                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-python-plain colored"></i> Python</span>
+                                            <span>92%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="92"></div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-java-plain colored"></i> Java</span>
+                                            <span>85%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="85"></div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                                            <span>88%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="88"></div>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                    
+                                <!-- Frontend -->
+                                <div class="skill-card">
+                                    <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-html5-plain colored"></i> HTML5</span>
+                                            <span class="skill-percent">0%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="95"></div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-css3-plain colored"></i> CSS3</span>
+                                            <span class="skill-percent">0%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="92"></div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-react-original colored"></i> React.js</span>
+                                            <span class="skill-percent">0%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="88"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <!-- Backend & Database -->
+                                <div class="skill-card">
+                                    <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-amazonwebservices-original colored"></i> AWS</span>
+                                            <span class="skill-percent">0%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="85"></div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-docker-plain colored"></i> Docker</span>
+                                            <span class="skill-percent">0%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="80"></div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-git-plain colored"></i> Git</span>
+                                            <span class="skill-percent">0%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="90"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <!-- Cloud & DevOps -->
+                                <div class="skill-card">
+                                    <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-amazonwebservices-original colored"></i> AWS</span>
+                                            <span class="skill-percent">0%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="85"></div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-docker-plain colored"></i> Docker</span>
+                                            <span class="skill-percent">0%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="80"></div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-git-plain colored"></i> Git</span>
+                                            <span class="skill-percent">0%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="90"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <!-- AI & Data -->
+                                <div class="skill-card">
+                                    <h3><i class="fas fa-brain"></i> AI & Data</h3>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-tensorflow-original colored"></i> TensorFlow</span>
+                                            <span class="skill-percent">0%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="78"></div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="skill-progress">
+                                        <div class="skill-info">
+                                            <span><i class="devicon-pandas-original colored"></i> Pandas</span>
+                                            <span class="skill-percent">0%</span>
+                                        </div>
+                                        <div class="progress-3d">
+                                            <div class="progress-fill" data-width="85"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body pb-2">
-                        <h4 class="mt-2">Technical Skills</h4>
-                        <span class="line mb-3"></span>
-                        <h6>HTML5 &amp; CSS3</h6>
-                        <div class="progress mb-3">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 97%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h6>JavaScript</h6>
-                        <div class="progress mb-3">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h6>Java</h6>
-                        <div class="progress mb-3">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h6>SQL</h6>
-                        <div class="progress mb-3">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h6>Python</h6>
-                        <div class="progress mb-3">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h6>UI/UX</h6>
-                        <div class="progress mb-3">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h6>Reactjs</h6>
-                        <div class="progress mb-3">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h4 class="mt-4">Languages</h4>
-                        <span class="line mb-3"></span>
-                        <h6>English</h6>
-                        <div class="progress mb-3">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h6>Hindi</h6>
-                        <div class="progress mb-3">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <h6>Sanskrit</h6>
-                        <div class="progress mb-3">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 57%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+                    </section>
                 </article>
             </div>
         </div>
     </section>
 
-    <section class="section bg-dark text-center d-flex align-items-center justify-content-center" style="min-height: 100px;">
+    <section class="section electric-section text-center d-flex align-items-center justify-content-center">
+        <canvas class="section-lightning"></canvas>
         <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 style="color: white;">
-                Better design, better experiences. As a designer and developer, I understand the perfect user interface should look good and work even better.
-              </h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="electric-heading">
+                        Better design, better experiences. As a designer and developer, I understand the perfect user interface should look good and work even better.
+                    </h3>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
 
     <section class="section section-bg service-bg" id="service">
@@ -797,10 +1515,13 @@
         </div>
     </section>
 
-    <section class="section bg-dark py-5" style="min-height: 100px;">
-        <div class="container text-center">
-            <h2 class="text-light mb-5 font-weight-normal">I Am Currently Seeking Opportunities</h2>
-            <a href="https://www.linkedin.com/in/its-prakhar-mittal" target="_blank">
+    <section class="section electric-section text-center d-flex align-items-center justify-content-center">
+        <canvas class="section-lightning"></canvas>
+        <div class="container">
+            <h2 class="electric-heading mb-4 font-weight-normal">
+                I Am Currently Seeking Opportunities
+            </h2>
+            <a href="https://www.linkedin.com/in/its-prakhar-mittal" target="_blank" rel="noopener noreferrer">
                 <button class="btn bg-primary w-lg">Connect with Me</button>
             </a>
         </div>
@@ -1169,7 +1890,314 @@
 
             animate();
         }
+        // =============================
+// STARFIELD CANVAS ANIMATION
+// =============================
+(function () {
+    class StarField {
+        constructor(canvas) {
+            this.canvas = canvas;
+            this.ctx = canvas.getContext('2d');
+            this.stars = [];
+            this.rafId = null;
+            this.width = 0;
+            this.height = 0;
 
+            const isMobile = window.innerWidth < 768;
+            this.starCount = isMobile ? 60 : 140;
+
+            this.init();
+        }
+
+        setupCanvas() {
+            const host = this.canvas.closest('section, header');
+            if (!host) return;
+
+            const rect = host.getBoundingClientRect();
+            const cssWidth = rect.width || window.innerWidth;
+            const cssHeight = rect.height || window.innerHeight * 0.7;
+
+            const dpr = Math.max(1, window.devicePixelRatio || 1);
+
+            this.canvas.width = Math.floor(cssWidth * dpr);
+            this.canvas.height = Math.floor(cssHeight * dpr);
+            this.canvas.style.width = cssWidth + 'px';
+            this.canvas.style.height = cssHeight + 'px';
+
+            this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            this.width = cssWidth;
+            this.height = cssHeight;
+        }
+
+        initStars() {
+            this.stars = [];
+            for (let i = 0; i < this.starCount; i++) {
+                this.stars.push({
+                    x: Math.random() * this.width,
+                    y: Math.random() * this.height,
+                    radius: Math.random() * 1.6 + 0.3,
+                    speed: Math.random() * 0.5 + 0.25,
+                    opacity: Math.random() * 0.8 + 0.2
+                });
+            }
+        }
+
+        draw() {
+            const ctx = this.ctx;
+            ctx.clearRect(0, 0, this.width, this.height);
+
+            for (const star of this.stars) {
+                star.y += star.speed;
+                if (star.y > this.height) {
+                    star.y = 0;
+                    star.x = Math.random() * this.width;
+                }
+
+                ctx.beginPath();
+                ctx.globalAlpha = star.opacity;
+                ctx.fillStyle = '#ffffff';
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            ctx.globalAlpha = 1;
+            this.rafId = requestAnimationFrame(this.draw.bind(this));
+        }
+
+        init() {
+            this.stop();
+            this.setupCanvas();
+            this.initStars();
+            this.draw();
+        }
+
+        stop() {
+            if (this.rafId) {
+                cancelAnimationFrame(this.rafId);
+                this.rafId = null;
+            }
+        }
+
+        resize() {
+            this.stop();
+            this.init();
+        }
+    }
+
+    const starCanvases = Array.from(document.querySelectorAll('canvas.stars'))
+        .filter(canvas => !canvas.closest('.main-navbar') && !canvas.closest('.electric-section'));
+
+    const fields = starCanvases.map(canvas => new StarField(canvas));
+
+    // Debounced, leak-free resize
+    let resizeTimeout;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            fields.forEach(field => field.resize());
+        }, 180);
+    });
+})();
+// =============================
+// NAVBAR ELECTRIC LIGHTNING
+// =============================
+(function () {
+    const canvas = document.getElementById('navbar-electric');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let width = 0;
+    let height = 0;
+    let rafId = null;
+
+    function resizeCanvas() {
+        const nav = canvas.closest('.main-navbar');
+        if (!nav) return;
+
+        const rect = nav.getBoundingClientRect();
+        const cssWidth = rect.width || window.innerWidth;
+        const cssHeight = rect.height || 64;
+
+        const dpr = Math.max(1, window.devicePixelRatio || 1);
+
+        canvas.width = Math.floor(cssWidth * dpr);
+        canvas.height = Math.floor(cssHeight * dpr);
+        canvas.style.width = cssWidth + 'px';
+        canvas.style.height = cssHeight + 'px';
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        width = cssWidth;
+        height = cssHeight;
+    }
+
+    function drawFrame(timestamp) {
+        if (!width || !height) return;
+
+        ctx.clearRect(0, 0, width, height);
+
+        ctx.save();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(0, 255, 255, 0.95)';
+        ctx.shadowColor = 'rgba(0, 255, 255, 1)';
+        ctx.shadowBlur = 20;
+
+        const segments = 20;
+        const baseY = height * 0.35;
+        const amplitude = height * 0.18;
+        const progress = (timestamp * 0.00035) % 1;
+        const offsetX = -width + progress * (width * 2.0);
+
+        const path = [];
+
+        for (let i = 0; i <= segments; i++) {
+            const t = i / segments;
+            const x = offsetX + t * width * 1.4;
+
+            if (x < -60 || x > width + 60) continue;
+
+            let y = baseY + (Math.random() - 0.5) * amplitude;
+
+            // Occasionally touch bottom edge
+            if (Math.random() > 0.92) {
+                y = height - Math.random() * (height * 0.08);
+            }
+
+            path.push({ x, y });
+        }
+
+        if (path.length > 1) {
+            // Main jagged bolt
+            ctx.beginPath();
+            ctx.moveTo(path[0].x, path[0].y);
+            for (let i = 1; i < path.length; i++) {
+                ctx.lineTo(path[i].x, path[i].y);
+            }
+            ctx.stroke();
+
+            // Soft reflection near bottom (cinematic bounce)
+            ctx.globalAlpha = 0.35;
+            ctx.beginPath();
+            const mirrorBase = height * 0.9;
+            ctx.moveTo(path[0].x, mirrorBase - (path[0].y - baseY) * 0.4);
+            for (let i = 1; i < path.length; i++) {
+                ctx.lineTo(path[i].x, mirrorBase - (path[i].y - baseY) * 0.4);
+            }
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+        }
+
+        ctx.restore();
+        rafId = requestAnimationFrame(drawFrame);
+    }
+
+    function start() {
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+        resizeCanvas();
+        rafId = requestAnimationFrame(drawFrame);
+    }
+
+    // Debounced resize, restart animation cleanly
+    let resizeTimeout;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(start, 180);
+    });
+
+    start();
+})();
+        document.querySelectorAll("canvas.stars").forEach(createStars);
+        function createStars(canvas) {
+            const ctx = canvas.getContext("2d");
+            let stars = [];
+            let animationId;
+        
+            const isMobile = window.innerWidth < 768;
+            const STAR_COUNT = isMobile ? 40 : 120;
+        
+            function resizeCanvas() {
+                const section = canvas.closest("section, header");
+                if (!section) return;
+        
+                const rect = section.getBoundingClientRect();
+                const dpr = window.devicePixelRatio || 1;
+        
+                // Set actual pixel size (for sharpness)
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+        
+                // Set CSS size
+                canvas.style.width = rect.width + "px";
+                canvas.style.height = rect.height + "px";
+        
+                // Scale context for retina screens
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+        
+            function initStars() {
+                stars = [];
+        
+                const width = canvas.clientWidth;
+                const height = canvas.clientHeight;
+        
+                for (let i = 0; i < STAR_COUNT; i++) {
+                    stars.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        radius: Math.random() * 1.5 + 0.3,
+                        speed: Math.random() * 0.5 + 0.2,
+                        opacity: Math.random()
+                    });
+                }
+            }
+        
+            function drawStars() {
+                const width = canvas.clientWidth;
+                const height = canvas.clientHeight;
+        
+                ctx.clearRect(0, 0, width, height);
+        
+                stars.forEach(star => {
+                    star.y += star.speed;
+        
+                    if (star.y > height) {
+                        star.y = 0;
+                        star.x = Math.random() * width;
+                    }
+        
+                    ctx.beginPath();
+                    ctx.globalAlpha = star.opacity;
+                    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fill();
+                });
+        
+                ctx.globalAlpha = 1;
+                animationId = requestAnimationFrame(drawStars);
+            }
+        
+            function init() {
+                resizeCanvas();
+                initStars();
+                drawStars();
+            }
+        
+            // Debounced resize (performance safe)
+            let resizeTimeout;
+            window.addEventListener("resize", () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    cancelAnimationFrame(animationId);
+                    init();
+                }, 200);
+            });
+        
+            init();
+        }
+        
+        // Apply to all star canvases
         document.querySelectorAll("canvas.stars").forEach(createStars);
     </script>
     <!-- Sparkle Cursor Effect -->
@@ -1184,7 +2212,7 @@
     box-shadow: 0 0 8px 2px #fff, 0 0 16px 4px #ffd700;
     opacity: 0.8;
     z-index: 9999; /* ensures it's above everything */
-    animation: sparkle-fade 0.7s linear forwards;
+    animation: sparkle-fade 0.0007s linear forwards;
   }
   @keyframes sparkle-fade {
     to {
@@ -1200,8 +2228,210 @@
     sparkle.style.left = (e.clientX - 4) + 'px';
     sparkle.style.top = (e.clientY - 4) + 'px';
     document.body.appendChild(sparkle);
-    setTimeout(() => sparkle.remove(), 700);
+    setTimeout(() => sparkle.remove(), 0.0070);
   });
 </script>
+<script>
+    (function () {
+        const canvas = document.getElementById("navbar-electric");
+        if (!canvas) return;
+    
+        const ctx = canvas.getContext("2d");
+        let width, height, raf;
+    
+        function resize() {
+            const nav = canvas.closest(".main-navbar");
+            const rect = nav.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+    
+            width = rect.width;
+            height = rect.height;
+    
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + "px";
+            canvas.style.height = height + "px";
+    
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+    
+        function drawLightning() {
+            ctx.clearRect(0, 0, width, height);
+    
+            const startY = height * 0.4;
+            const segments = 25;
+            const segmentWidth = width / segments;
+    
+            ctx.lineWidth = 2.2;
+            ctx.strokeStyle = "#00f5ff";
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = "#00f5ff";
+    
+            ctx.beginPath();
+            ctx.moveTo(0, startY);
+    
+            let lastY = startY;
+    
+            for (let i = 1; i <= segments; i++) {
+                let x = i * segmentWidth;
+                let y = startY + (Math.random() - 0.5) * 50;
+    
+                // 3D depth illusion
+                y += Math.sin(i * 0.4 + performance.now() * 0.003) * 10;
+    
+                // bottom reflection trigger
+                if (Math.random() > 0.92) {
+                    y = height - 5;
+                }
+    
+                ctx.lineTo(x, y);
+                lastY = y;
+            }
+    
+            ctx.stroke();
+    
+            // soft reflection
+            ctx.globalAlpha = 0.25;
+            ctx.beginPath();
+            ctx.moveTo(0, height - 2);
+            ctx.lineTo(width, height - 2);
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+    
+            raf = requestAnimationFrame(drawLightning);
+        }
+    
+        resize();
+        drawLightning();
+    
+        window.addEventListener("resize", () => {
+            cancelAnimationFrame(raf);
+            resize();
+            drawLightning();
+        });
+    })();
+    </script>
+    <script>
+        (function () {
+            const sections = document.querySelectorAll(".section-lightning");
+        
+            sections.forEach(canvas => {
+                const ctx = canvas.getContext("2d");
+                let width, height, raf;
+        
+                function resize() {
+                    const section = canvas.closest(".electric-section");
+                    const rect = section.getBoundingClientRect();
+                    const dpr = window.devicePixelRatio || 1;
+        
+                    width = rect.width;
+                    height = rect.height;
+        
+                    canvas.width = width * dpr;
+                    canvas.height = height * dpr;
+                    canvas.style.width = width + "px";
+                    canvas.style.height = height + "px";
+        
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                }
+        
+                function draw() {
+                    ctx.clearRect(0, 0, width, height);
+        
+                    const centerY = height / 2;
+                    const segments = 30;
+                    const segmentWidth = width / segments;
+        
+                    ctx.lineWidth = 3;
+                    ctx.strokeStyle = "#00ffff";
+                    ctx.shadowBlur = 30;
+                    ctx.shadowColor = "#00ffff";
+        
+                    ctx.beginPath();
+                    ctx.moveTo(0, centerY);
+        
+                    for (let i = 1; i <= segments; i++) {
+                        const x = i * segmentWidth;
+                        let y = centerY + (Math.random() - 0.5) * 60;
+        
+                        // depth illusion
+                        y += Math.sin(i * 0.3 + performance.now() * 0.004) * 20;
+        
+                        ctx.lineTo(x, y);
+        
+                        // random branch
+                        if (Math.random() > 0.93) {
+                            ctx.moveTo(x, y);
+                            ctx.lineTo(x + 10, y + 25);
+                        }
+                    }
+        
+                    ctx.stroke();
+        
+                    raf = requestAnimationFrame(draw);
+                }
+        
+                resize();
+                draw();
+        
+                window.addEventListener("resize", () => {
+                    cancelAnimationFrame(raf);
+                    resize();
+                    draw();
+                });
+            });
+        })();
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const bars = document.querySelectorAll(".progress-fill");
+            
+                bars.forEach(bar => {
+                    const width = bar.getAttribute("data-width");
+                    setTimeout(() => {
+                        bar.style.width = width + "%";
+                    }, 300);
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            
+                const skillSection = document.querySelector("#resume");
+                const bars = document.querySelectorAll(".progress-fill");
+                let animated = false;
+            
+                function animateSkills() {
+                    if (animated) return;
+            
+                    const sectionTop = skillSection.getBoundingClientRect().top;
+                    const trigger = window.innerHeight - 100;
+            
+                    if (sectionTop < trigger) {
+                        bars.forEach(bar => {
+                            const target = parseInt(bar.dataset.width);
+                            const percentEl = bar.closest(".skill-progress")
+                                                 .querySelector(".skill-percent");
+            
+                            bar.style.width = target + "%";
+            
+                            let count = 0;
+                            const counter = setInterval(() => {
+                                if (count >= target) {
+                                    clearInterval(counter);
+                                } else {
+                                    count++;
+                                    percentEl.textContent = count + "%";
+                                }
+                            }, 15);
+                        });
+            
+                        animated = true;
+                    }
+                }
+            
+                window.addEventListener("scroll", animateSkills);
+            });
+            </script>
 </body>
 </html>
